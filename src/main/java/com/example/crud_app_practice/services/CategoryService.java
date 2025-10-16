@@ -21,8 +21,8 @@ public class CategoryService extends BaseService<Category, Long> implements Cate
 
   @Override
   public Category getASingleCategory(Long categoryId) {
-    Optional<Category> category = this.categoryRepository.findCategoryById(categoryId);
-    return category.orElse(null);
+    Category category = this.categoryRepository.findCategoryById(categoryId);
+    return category != null ? category: null;
   }
 
   @Override
