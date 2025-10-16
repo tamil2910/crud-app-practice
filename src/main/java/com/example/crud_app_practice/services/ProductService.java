@@ -32,24 +32,24 @@ public class ProductService extends BaseService<Product, Long> implements Produc
   @Override
   public Product saveASingleProduct(Product product) {
 
-    if(product.getCategory() != null) {
-      Category category = product.getCategory();
+    // if(product.getCategory() != null) {
+    //   Category category = product.getCategory();
 
-      // saving new entry
-      if(category.getId() == null) {
-        category = categoryRepository.save(category);
-      }
-      else {
-        Category exisCategory = categoryRepository.findCategoryById(category.getId());
-        if(exisCategory != null) {
-          category = exisCategory;
-        } else {
-          throw new RuntimeException("Category not found with Id of " + category.getId());
-        }
-      }
+    //   // saving new entry
+    //   if(category.getId() == null) {
+    //     category = categoryRepository.save(category);
+    //   }
+    //   else {
+    //     Category exisCategory = categoryRepository.findCategoryById(category.getId());
+    //     if(exisCategory != null) {
+    //       category = exisCategory;
+    //     } else {
+    //       throw new RuntimeException("Category not found with Id of " + category.getId());
+    //     }
+    //   }
 
-      product.setCategory(category);
-    }
+    //   product.setCategory(category);
+    // }
     return saveAndRefresh(product);
   }
 
