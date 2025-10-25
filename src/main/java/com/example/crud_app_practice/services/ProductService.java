@@ -25,8 +25,7 @@ public class ProductService extends BaseService<Product, Long> implements Produc
 
   @Override
   public Product getASingleProduct(Long productId) {
-    Optional<Product> product = Optional.ofNullable(productRepository.findProductById(productId));
-    return product.orElse(null);
+    return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
   }
 
   @Override
