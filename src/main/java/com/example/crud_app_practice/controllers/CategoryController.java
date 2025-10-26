@@ -14,6 +14,8 @@ import com.example.crud_app_practice.models.Category;
 import com.example.crud_app_practice.response_setups.ApiResponse;
 import com.example.crud_app_practice.services.CategoryService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/categories")
@@ -25,7 +27,7 @@ public class CategoryController {
   }
 
   @PostMapping("/")
-  public ApiResponse<Category> saveSingleCategory(@RequestBody Category data) {
+  public ApiResponse<Category> saveSingleCategory(@Valid @RequestBody Category data) {
     Category savCategory = this.categoryService.saveASingleCategory(data);
 
     if (savCategory != null) {

@@ -4,6 +4,8 @@ import java.util.List;
 import com.example.crud_app_practice.response_setups.ApiResponse;
 import com.example.crud_app_practice.services.ProductService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +37,7 @@ public class ProductController {
   }
 
   @PostMapping("/")
-  public ApiResponse<Product> saveSingleProduct(@RequestBody Product data) {
+  public ApiResponse<Product> saveSingleProduct(@Valid @RequestBody Product data) {
     Product saveProduct = productService.saveASingleProduct(data);
 
     if(saveProduct != null) {
