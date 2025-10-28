@@ -21,7 +21,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "products")
+// @Table(name = "products")
 public class Product extends BaseModel {
   @NotBlank(message = "Title is required")
   @Size(min = 2, max = 50, message = "Title must be between 2 to 50 characters")

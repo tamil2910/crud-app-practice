@@ -16,11 +16,14 @@ import com.example.crud_app_practice.repositories.ProductRepository;
 public class ProductService extends BaseService<Product, Long> implements ProductServiceInterface {
   private final ProductRepository productRepository;
   private final CategoryRepository categoryRepository;
+  private final WebSocketService webSocketService;
 
-  public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
+
+  public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository, WebSocketService webSocketService) {
     super(productRepository);
     this.productRepository = productRepository;
     this.categoryRepository = categoryRepository;
+    this.webSocketService = webSocketService;
   }
 
   @Override
@@ -50,6 +53,10 @@ public class ProductService extends BaseService<Product, Long> implements Produc
       product.setCategory(category);
     }
     Product saved = saveAndRefresh(product);
+
+     // Broadcast new product to all WebSocket clients
+    this.webSocketService.sendProductUpdate(saved);
+    
     return repository.findById(saved.getId()).orElse(saved);
   }
 

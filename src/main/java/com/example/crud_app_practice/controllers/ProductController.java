@@ -36,7 +36,7 @@ public class ProductController {
     }
   }
 
-  @PostMapping("/")
+  @PostMapping
   public ApiResponse<Product> saveSingleProduct(@Valid @RequestBody Product data) {
     Product saveProduct = productService.saveASingleProduct(data);
 
@@ -47,7 +47,7 @@ public class ProductController {
     }
   }
   
-  @GetMapping("/")
+  @GetMapping
   public ApiResponse<List<Product>> getAllProduct() {
     List<Product> products = productService.getAllProduct();
     

@@ -26,7 +26,7 @@ public class CategoryController {
     this.categoryService = categoryService;
   }
 
-  @PostMapping("/")
+  @PostMapping
   public ApiResponse<Category> saveSingleCategory(@Valid @RequestBody Category data) {
     Category savCategory = this.categoryService.saveASingleCategory(data);
 
@@ -49,7 +49,7 @@ public class CategoryController {
     
   }
 
-  @GetMapping("/")
+  @GetMapping
   public ApiResponse<List<Category>> getAllCategory() {
     List<Category> category = categoryService.getAllCategory();
     return new ApiResponse<>(true, "Success", category);
